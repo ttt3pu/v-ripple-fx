@@ -7,7 +7,7 @@
   left: 0;
   top: 0;
   overflow: hidden;
-  z-index: z(ripple);
+  z-index: 1;
   pointer-events: none;
   contain: strict;
 }
