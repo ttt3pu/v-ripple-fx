@@ -1,5 +1,9 @@
 # v-ripple-fx
 
+Ripple effect directive for Vue.
+
+![Ripple!](docs/ripple.gif)
+
 ## Usage
 
 ```js
