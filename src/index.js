@@ -28,10 +28,9 @@ const install = (Vue) => {
         el.insertAdjacentElement('afterbegin', parent);
         parent.classList.add('v-ripple-fx-ink-parent');
 
-        const originalPosition = window.getComputedStyle(el).position;
+        const isStatic = window.getComputedStyle(el).position === 'static';
 
-        if (originalPosition !== 'relative') {
-          el.setAttribute('data-v-ripple-fx-original-pos', originalPosition);
+        if (isStatic) {
           el.style.position = 'relative';
         }
 
@@ -68,9 +67,8 @@ const install = (Vue) => {
             }
           }
 
-          if (el.getAttribute('data-v-ripple-fx-original-pos') && el.querySelectorAll('.v-ripple-fx-ink-parent').length === 1) {
-            el.style.position = el.getAttribute('data-v-ripple-fx-original-pos');
-            el.removeAttribute('data-v-ripple-fx-original-pos');
+          if (isStatic && el.querySelectorAll('.v-ripple-fx-ink-parent').length === 1) {
+            el.style.position = 'static';
           }
 
           parent.remove();
