@@ -50,8 +50,9 @@ const install = (Vue) => {
           ink.style.width = `${d}px`;
         }
 
-        ink.style.left = `${e.offsetX - (ink.offsetWidth / 2)}px`;
-        ink.style.top = `${e.offsetY - (ink.offsetHeight/ 2)}px`;
+        const targetRect = e.currentTarget.getBoundingClientRect();
+        ink.style.left = e.clientX - targetRect.left - (ink.offsetWidth / 2) + 'px';
+        ink.style.top = e.clientY - targetRect.top - (ink.offsetHeight/ 2) + 'px';
         ink.classList.add('animate');
 
         setTimeout(() => {
@@ -74,7 +75,7 @@ const install = (Vue) => {
           parent.remove();
           ink.remove();
         }, 300);
-      });
+      }, false);
     },
   });
 };
